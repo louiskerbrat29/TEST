@@ -35,7 +35,7 @@ const Blob: React.FC<{
 
 export const Background: React.FC = () => {
 	const frame = useCurrentFrame();
-	const wobble = Math.sin(frame / 220) * 4;
+	const wobble = Math.sin(frame / 130) * 5;
 	const topPct = 42 + wobble;
 
 	return (
@@ -52,7 +52,7 @@ export const Background: React.FC = () => {
 				left={-140}
 				color={COLORS.grey}
 				opacity={0.5}
-				speed={140}
+				speed={85}
 				phase={0}
 			/>
 			<Blob
@@ -61,7 +61,7 @@ export const Background: React.FC = () => {
 				left={720}
 				color={COLORS.red}
 				opacity={0.25}
-				speed={110}
+				speed={65}
 				phase={2}
 			/>
 			<Blob
@@ -70,7 +70,7 @@ export const Background: React.FC = () => {
 				left={-100}
 				color={COLORS.redDark}
 				opacity={0.3}
-				speed={160}
+				speed={95}
 				phase={4}
 			/>
 

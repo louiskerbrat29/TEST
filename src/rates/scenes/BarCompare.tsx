@@ -8,6 +8,7 @@ import {formatEuro} from '../format';
 
 const MAX_VALUE = 220000;
 const MAX_HEIGHT = 340;
+const TOTAL = 180;
 
 const Bar: React.FC<{
 	value: number;
@@ -18,7 +19,7 @@ const Bar: React.FC<{
 	const frame = useCurrentFrame();
 	const height = interpolate(
 		frame - growDelay,
-		[0, 45],
+		[0, 32],
 		[0, (value / MAX_VALUE) * MAX_HEIGHT],
 		{extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
 	);
@@ -43,7 +44,7 @@ const Bar: React.FC<{
 					<CountUp
 						to={value}
 						delay={growDelay}
-						duration={45}
+						duration={32}
 						format={formatEuro}
 						style={{
 							fontFamily: FONT_SANS,
@@ -96,6 +97,16 @@ const Bar: React.FC<{
 };
 
 export const BarCompare: React.FC = () => {
+	const frame = useCurrentFrame();
+	const exitOpacity = interpolate(frame, [TOTAL - 18, TOTAL], [1, 0], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+	const exitScale = interpolate(frame, [TOTAL - 18, TOTAL], [1, 0.94], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+
 	return (
 		<AbsoluteFill
 			style={{
@@ -103,13 +114,15 @@ export const BarCompare: React.FC = () => {
 				justifyContent: 'center',
 				flexDirection: 'column',
 				padding: '0 50px',
+				opacity: exitOpacity,
+				transform: `scale(${exitScale})`,
 			}}
 		>
 			<Subheading delay={0} fontSize={32} maxWidth={840}>
 				Montant empruntable pour 1 000 €/mois sur 20 ans
 			</Subheading>
 			<div style={{height: 36}} />
-			<Card delay={12} width={920}>
+			<Card delay={10} width={920}>
 				<div
 					style={{
 						display: 'flex',
@@ -117,8 +130,8 @@ export const BarCompare: React.FC = () => {
 						justifyContent: 'space-around',
 					}}
 				>
-					<Bar value={217000} label="Taux à 1 %" color={COLORS.grey} growDelay={20} />
-					<Bar value={165000} label="Taux à 4 %" color={COLORS.red} growDelay={70} />
+					<Bar value={217000} label="Taux à 1 %" color={COLORS.grey} growDelay={16} />
+					<Bar value={165000} label="Taux à 4 %" color={COLORS.red} growDelay={48} />
 				</div>
 			</Card>
 		</AbsoluteFill>

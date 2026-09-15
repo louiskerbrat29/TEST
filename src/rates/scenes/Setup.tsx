@@ -1,8 +1,10 @@
 import React from 'react';
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {Card} from '../Card';
 import {COLORS, FONT_SANS} from '../../theme';
 import {Subheading} from '../Heading';
+
+const TOTAL = 110;
 
 const StatBlock: React.FC<{value: string; label: string}> = ({
 	value,
@@ -34,6 +36,16 @@ const StatBlock: React.FC<{value: string; label: string}> = ({
 );
 
 export const Setup: React.FC = () => {
+	const frame = useCurrentFrame();
+	const exitOpacity = interpolate(frame, [TOTAL - 16, TOTAL], [1, 0], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+	const exitScale = interpolate(frame, [TOTAL - 16, TOTAL], [1, 0.94], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+
 	return (
 		<AbsoluteFill
 			style={{
@@ -41,13 +53,15 @@ export const Setup: React.FC = () => {
 				justifyContent: 'center',
 				flexDirection: 'column',
 				padding: '0 60px',
+				opacity: exitOpacity,
+				transform: `scale(${exitScale})`,
 			}}
 		>
 			<Subheading delay={0} fontSize={34} maxWidth={820}>
 				Prenons un acheteur qui peut rembourser :
 			</Subheading>
 			<div style={{height: 40}} />
-			<Card delay={18} width={860}>
+			<Card delay={14} width={860}>
 				<div
 					style={{
 						display: 'flex',

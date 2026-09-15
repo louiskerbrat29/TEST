@@ -27,6 +27,7 @@ const END_POINT = POINTS[8];
 
 const DRAW_START = 10;
 const DRAW_END = 300;
+const TOTAL = 360;
 
 const Caption: React.FC<{
 	opacity: number;
@@ -85,6 +86,15 @@ export const RateChart: React.FC = () => {
 		{extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
 	);
 
+	const exitOpacity = interpolate(frame, [TOTAL - 18, TOTAL], [1, 0], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+	const exitScale = interpolate(frame, [TOTAL - 18, TOTAL], [1, 0.94], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+
 	return (
 		<AbsoluteFill
 			style={{
@@ -92,6 +102,8 @@ export const RateChart: React.FC = () => {
 				justifyContent: 'center',
 				flexDirection: 'column',
 				padding: '0 50px',
+				opacity: exitOpacity,
+				transform: `scale(${exitScale})`,
 			}}
 		>
 			<div style={{position: 'relative', width: 820, height: 90}}>

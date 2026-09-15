@@ -30,7 +30,7 @@ const Row: React.FC<{
 			<CountUp
 				to={value}
 				delay={delay}
-				duration={40}
+				duration={30}
 				format={formatEuro}
 				style={{
 					fontFamily: FONT_SANS,
@@ -43,10 +43,21 @@ const Row: React.FC<{
 	</div>
 );
 
+const TOTAL = 180;
+
 export const Mechanism: React.FC = () => {
 	const frame = useCurrentFrame();
 
-	const ctaOpacity = interpolate(frame, [130, 150], [0, 1], {
+	const ctaOpacity = interpolate(frame, [110, 128], [0, 1], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+
+	const exitOpacity = interpolate(frame, [TOTAL - 18, TOTAL], [1, 0], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+	const exitScale = interpolate(frame, [TOTAL - 18, TOTAL], [1, 0.94], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 	});
@@ -58,13 +69,15 @@ export const Mechanism: React.FC = () => {
 				justifyContent: 'center',
 				flexDirection: 'column',
 				padding: '0 60px',
+				opacity: exitOpacity,
+				transform: `scale(${exitScale})`,
 			}}
 		>
 			<Card delay={0} width={900}>
 				<div style={{display: 'flex', flexDirection: 'column', gap: 30}}>
-					<Row icon="🏠" label="Prix affiché" value={250000} color={COLORS.darkText} delay={15} />
+					<Row icon="🏠" label="Prix affiché" value={250000} color={COLORS.darkText} delay={12} />
 					<div style={{width: '100%', height: 2, background: COLORS.muted}} />
-					<Row icon="💶" label="Financement possible aujourd'hui" value={215000} color={COLORS.red} delay={55} />
+					<Row icon="💶" label="Financement possible aujourd'hui" value={215000} color={COLORS.red} delay={44} />
 				</div>
 			</Card>
 			<div style={{height: 42}} />

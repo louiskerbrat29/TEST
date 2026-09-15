@@ -15,16 +15,16 @@ export const RatesVideo: React.FC = () => {
 		<AbsoluteFill>
 			<Background />
 			<Series>
-				<Series.Sequence durationInFrames={150}>
+				<Series.Sequence durationInFrames={130}>
 					<Hook />
 				</Series.Sequence>
-				<Series.Sequence durationInFrames={120}>
+				<Series.Sequence durationInFrames={110}>
 					<Setup />
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={180}>
 					<BarCompare />
 				</Series.Sequence>
-				<Series.Sequence durationInFrames={120}>
+				<Series.Sequence durationInFrames={100}>
 					<BigLoss />
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={360}>
@@ -33,7 +33,7 @@ export const RatesVideo: React.FC = () => {
 				<Series.Sequence durationInFrames={180}>
 					<Mechanism />
 				</Series.Sequence>
-				<Series.Sequence durationInFrames={150}>
+				<Series.Sequence durationInFrames={110}>
 					<Nuance />
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={180}>
