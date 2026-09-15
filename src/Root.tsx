@@ -2,6 +2,7 @@ import React from 'react';
 import {Composition} from 'remotion';
 import {MyComp} from './MyComp';
 import {Presentation} from './Presentation';
+import {RatesVideo} from './RatesVideo';
 
 export const Root: React.FC = () => {
 	return (
@@ -21,6 +22,15 @@ export const Root: React.FC = () => {
 				durationInFrames={1050}
 				width={1080}
 				height={1080}
+				fps={30}
+				defaultProps={{}}
+			/>
+			<Composition
+				id="RatesVideo"
+				component={RatesVideo}
+				durationInFrames={1440}
+				width={1080}
+				height={1920}
 				fps={30}
 				defaultProps={{}}
 			/>
