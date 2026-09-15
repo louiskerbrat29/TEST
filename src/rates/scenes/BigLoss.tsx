@@ -5,7 +5,7 @@ import {COLORS, FONT_SANS} from '../../theme';
 import {Subheading} from '../Heading';
 import {formatEuro} from '../format';
 
-const TOTAL = 100;
+const TOTAL = 190;
 
 export const BigLoss: React.FC = () => {
 	const frame = useCurrentFrame();

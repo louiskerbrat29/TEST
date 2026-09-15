@@ -26,8 +26,8 @@ const LOW_POINT = POINTS[5];
 const END_POINT = POINTS[8];
 
 const DRAW_START = 10;
-const DRAW_END = 390;
-const TOTAL = 450;
+const DRAW_END = 460;
+const TOTAL = 540;
 
 const Caption: React.FC<{
 	opacity: number;
@@ -61,8 +61,8 @@ export const RateChart: React.FC = () => {
 	});
 	const dashOffset = TOTAL_LENGTH * (1 - drawProgress);
 
-	const lowFrame = 245;
-	const endFrame = 385;
+	const lowFrame = 291;
+	const endFrame = 455;
 
 	const lowOpacity = interpolate(frame, [lowFrame, lowFrame + 12], [0, 1], {
 		extrapolateLeft: 'clamp',
@@ -75,19 +75,19 @@ export const RateChart: React.FC = () => {
 
 	const capAOpacity = interpolate(
 		frame,
-		[0, 15, 125, 145],
+		[0, 15, 155, 175],
 		[0, 1, 1, 0],
 		{extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
 	);
 	const capMidOpacity = interpolate(
 		frame,
-		[140, 160, 265, 285],
+		[170, 190, 325, 345],
 		[0, 1, 1, 0],
 		{extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
 	);
 	const capBOpacity = interpolate(
 		frame,
-		[280, 300, 432, 450],
+		[340, 360, 522, 540],
 		[0, 1, 1, 0],
 		{extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
 	);

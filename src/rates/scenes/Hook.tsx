@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {Heading, Subheading} from '../Heading';
 
-const TOTAL = 130;
+const TOTAL = 220;
 
 export const Hook: React.FC = () => {
 	const frame = useCurrentFrame();

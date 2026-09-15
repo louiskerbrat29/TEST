@@ -94,17 +94,17 @@ const RangeRow: React.FC<{
 	);
 };
 
-const TOTAL = 230;
+const TOTAL = 320;
 
 export const Mechanism: React.FC = () => {
 	const frame = useCurrentFrame();
 
-	const ctaOpacity = interpolate(frame, [160, 178], [0, 1], {
+	const ctaOpacity = interpolate(frame, [190, 208], [0, 1], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 	});
 
-	const introExit = interpolate(frame, [58, 75], [1, 0], {
+	const introExit = interpolate(frame, [88, 105], [1, 0], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 	});
@@ -135,11 +135,11 @@ export const Mechanism: React.FC = () => {
 				</span>
 			</Subheading>
 			<div style={{height: 36}} />
-			<Card delay={65} width={920}>
+			<Card delay={95} width={920}>
 				<div style={{display: 'flex', flexDirection: 'column', gap: 30}}>
-					<PriceRow icon="🏠" label="Prix affiché" value={250000} color={COLORS.darkText} delay={80} />
+					<PriceRow icon="🏠" label="Prix affiché" value={250000} color={COLORS.darkText} delay={110} />
 					<div style={{width: '100%', height: 2, background: COLORS.muted}} />
-					<RangeRow icon="💶" label="Financement possible aujourd'hui" low={210000} high={220000} color={COLORS.red} delay={115} />
+					<RangeRow icon="💶" label="Financement possible aujourd'hui" low={210000} high={220000} color={COLORS.red} delay={145} />
 				</div>
 			</Card>
 			<div style={{height: 42}} />

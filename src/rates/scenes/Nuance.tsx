@@ -3,7 +3,7 @@ import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {Heading, Subheading} from '../Heading';
 import {COLORS} from '../../theme';
 
-const TOTAL = 130;
+const TOTAL = 220;
 
 export const Nuance: React.FC = () => {
 	const frame = useCurrentFrame();

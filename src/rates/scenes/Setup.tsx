@@ -4,7 +4,7 @@ import {Card} from '../Card';
 import {COLORS, FONT_SANS} from '../../theme';
 import {Subheading} from '../Heading';
 
-const TOTAL = 110;
+const TOTAL = 200;
 
 const StatBlock: React.FC<{value: string; label: string}> = ({
 	value,

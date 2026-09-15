@@ -8,7 +8,7 @@ import {formatEuro} from '../format';
 
 const MAX_VALUE = 220000;
 const MAX_HEIGHT = 340;
-const TOTAL = 180;
+const TOTAL = 270;
 
 const Bar: React.FC<{
 	value: number;
