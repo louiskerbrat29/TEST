@@ -3,7 +3,7 @@ import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {Heading, Subheading} from '../Heading';
 import {COLORS} from '../../theme';
 
-const TOTAL = 110;
+const TOTAL = 130;
 
 export const Nuance: React.FC = () => {
 	const frame = useCurrentFrame();
@@ -33,9 +33,9 @@ export const Nuance: React.FC = () => {
 				Bien sûr, les taux ne sont pas le seul facteur.
 			</Subheading>
 			<div style={{height: 26}} />
-			<Heading delay={34} fontSize={42} maxWidth={820}>
-				Mais pour comprendre les prix, regardez toujours la capacité
-				d'emprunt des acheteurs.
+			<Heading delay={34} fontSize={40} maxWidth={840}>
+				Mais pour comprendre l'évolution des prix immobiliers, regardez
+				toujours la capacité d'emprunt des acheteurs.
 			</Heading>
 		</AbsoluteFill>
 	);

@@ -31,19 +31,26 @@ export const Heading: React.FC<{
 		extrapolateRight: 'clamp',
 	});
 
-	const exitLocal = exitAt === undefined ? Infinity : frame - exitAt;
-	const outOpacity = interpolate(exitLocal, [0, EXIT_DURATION], [1, 0], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
-	const outTranslateY = interpolate(exitLocal, [0, EXIT_DURATION], [0, -30], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
-	const outScale = interpolate(exitLocal, [0, EXIT_DURATION], [1, 0.92], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
+	const hasExit = exitAt !== undefined;
+	const exitLocal = hasExit ? frame - exitAt : 0;
+	const outOpacity = hasExit
+		? interpolate(exitLocal, [0, EXIT_DURATION], [1, 0], {
+				extrapolateLeft: 'clamp',
+				extrapolateRight: 'clamp',
+			})
+		: 1;
+	const outTranslateY = hasExit
+		? interpolate(exitLocal, [0, EXIT_DURATION], [0, -30], {
+				extrapolateLeft: 'clamp',
+				extrapolateRight: 'clamp',
+			})
+		: 0;
+	const outScale = hasExit
+		? interpolate(exitLocal, [0, EXIT_DURATION], [1, 0.92], {
+				extrapolateLeft: 'clamp',
+				extrapolateRight: 'clamp',
+			})
+		: 1;
 
 	return (
 		<div
@@ -88,15 +95,20 @@ export const Subheading: React.FC<{
 		extrapolateRight: 'clamp',
 	});
 
-	const exitLocal = exitAt === undefined ? Infinity : frame - exitAt;
-	const outOpacity = interpolate(exitLocal, [0, EXIT_DURATION], [1, 0], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
-	const outTranslateY = interpolate(exitLocal, [0, EXIT_DURATION], [0, -20], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
+	const hasExit = exitAt !== undefined;
+	const exitLocal = hasExit ? frame - exitAt : 0;
+	const outOpacity = hasExit
+		? interpolate(exitLocal, [0, EXIT_DURATION], [1, 0], {
+				extrapolateLeft: 'clamp',
+				extrapolateRight: 'clamp',
+			})
+		: 1;
+	const outTranslateY = hasExit
+		? interpolate(exitLocal, [0, EXIT_DURATION], [0, -20], {
+				extrapolateLeft: 'clamp',
+				extrapolateRight: 'clamp',
+			})
+		: 0;
 
 	return (
 		<div

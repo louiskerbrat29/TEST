@@ -27,13 +27,13 @@ export const RatesVideo: React.FC = () => {
 				<Series.Sequence durationInFrames={100}>
 					<BigLoss />
 				</Series.Sequence>
-				<Series.Sequence durationInFrames={360}>
+				<Series.Sequence durationInFrames={450}>
 					<RateChart />
 				</Series.Sequence>
-				<Series.Sequence durationInFrames={180}>
+				<Series.Sequence durationInFrames={230}>
 					<Mechanism />
 				</Series.Sequence>
-				<Series.Sequence durationInFrames={110}>
+				<Series.Sequence durationInFrames={130}>
 					<Nuance />
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={180}>

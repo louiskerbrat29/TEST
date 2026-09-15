@@ -26,8 +26,8 @@ const LOW_POINT = POINTS[5];
 const END_POINT = POINTS[8];
 
 const DRAW_START = 10;
-const DRAW_END = 300;
-const TOTAL = 360;
+const DRAW_END = 390;
+const TOTAL = 450;
 
 const Caption: React.FC<{
 	opacity: number;
@@ -42,7 +42,7 @@ const Caption: React.FC<{
 			opacity,
 			fontFamily: FONT_SANS,
 			fontWeight: 700,
-			fontSize: 32,
+			fontSize: 30,
 			color: COLORS.white,
 			textAlign: 'center',
 			lineHeight: 1.3,
@@ -61,8 +61,8 @@ export const RateChart: React.FC = () => {
 	});
 	const dashOffset = TOTAL_LENGTH * (1 - drawProgress);
 
-	const lowFrame = 195;
-	const endFrame = 300;
+	const lowFrame = 245;
+	const endFrame = 385;
 
 	const lowOpacity = interpolate(frame, [lowFrame, lowFrame + 12], [0, 1], {
 		extrapolateLeft: 'clamp',
@@ -75,14 +75,20 @@ export const RateChart: React.FC = () => {
 
 	const capAOpacity = interpolate(
 		frame,
-		[0, 15, 160, 190],
+		[0, 15, 125, 145],
+		[0, 1, 1, 0],
+		{extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
+	);
+	const capMidOpacity = interpolate(
+		frame,
+		[140, 160, 265, 285],
 		[0, 1, 1, 0],
 		{extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
 	);
 	const capBOpacity = interpolate(
 		frame,
-		[175, 205, 345, 360],
-		[0, 1, 1, 1],
+		[280, 300, 432, 450],
+		[0, 1, 1, 0],
 		{extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
 	);
 
@@ -106,8 +112,9 @@ export const RateChart: React.FC = () => {
 				transform: `scale(${exitScale})`,
 			}}
 		>
-			<div style={{position: 'relative', width: 820, height: 90}}>
+			<div style={{position: 'relative', width: 860, height: 110}}>
 				<Caption opacity={capAOpacity} title="Entre 2016 et 2021, les taux ont fortement baissé, jusqu'à avoisiner 1 %." />
+				<Caption opacity={capMidOpacity} title="Les acheteurs pouvaient emprunter davantage, la demande était forte, les prix ont progressé." />
 				<Caption opacity={capBOpacity} title="Puis à partir de 2022, les taux sont remontés brutalement, jusqu'à dépasser les 4 %." />
 			</div>
 

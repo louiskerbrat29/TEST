@@ -6,7 +6,7 @@ import {COLORS, FONT_SANS} from '../../theme';
 import {Subheading} from '../Heading';
 import {formatEuro} from '../format';
 
-const Row: React.FC<{
+const PriceRow: React.FC<{
 	icon: string;
 	label: string;
 	value: number;
@@ -43,12 +43,68 @@ const Row: React.FC<{
 	</div>
 );
 
-const TOTAL = 180;
+const RangeRow: React.FC<{
+	icon: string;
+	label: string;
+	low: number;
+	high: number;
+	color: string;
+	delay: number;
+}> = ({icon, label, low, high, color, delay}) => {
+	const frame = useCurrentFrame();
+	const opacity = interpolate(frame - delay, [0, 14], [0, 1], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+	const scale = interpolate(frame - delay, [0, 14], [0.85, 1], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+
+	return (
+		<div style={{display: 'flex', alignItems: 'center', width: '100%'}}>
+			<div style={{fontSize: 40, marginRight: 20}}>{icon}</div>
+			<div style={{flex: 1}}>
+				<div
+					style={{
+						fontFamily: FONT_SANS,
+						fontWeight: 700,
+						fontSize: 22,
+						color: COLORS.darkText,
+						opacity: 0.75,
+					}}
+				>
+					{label}
+				</div>
+				<div
+					style={{
+						fontFamily: FONT_SANS,
+						fontWeight: 900,
+						fontSize: 38,
+						color,
+						opacity,
+						transform: `scale(${scale})`,
+						transformOrigin: 'left center',
+					}}
+				>
+					{formatEuro(low)} – {formatEuro(high)}
+				</div>
+			</div>
+		</div>
+	);
+};
+
+const TOTAL = 230;
 
 export const Mechanism: React.FC = () => {
 	const frame = useCurrentFrame();
 
-	const ctaOpacity = interpolate(frame, [110, 128], [0, 1], {
+	const ctaOpacity = interpolate(frame, [160, 178], [0, 1], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+
+	const introExit = interpolate(frame, [58, 75], [1, 0], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 	});
@@ -73,11 +129,17 @@ export const Mechanism: React.FC = () => {
 				transform: `scale(${exitScale})`,
 			}}
 		>
-			<Card delay={0} width={900}>
+			<Subheading delay={4} fontSize={32} maxWidth={800}>
+				<span style={{opacity: introExit}}>
+					Et mécaniquement, les acheteurs ont pu emprunter beaucoup moins.
+				</span>
+			</Subheading>
+			<div style={{height: 36}} />
+			<Card delay={65} width={920}>
 				<div style={{display: 'flex', flexDirection: 'column', gap: 30}}>
-					<Row icon="🏠" label="Prix affiché" value={250000} color={COLORS.darkText} delay={12} />
+					<PriceRow icon="🏠" label="Prix affiché" value={250000} color={COLORS.darkText} delay={80} />
 					<div style={{width: '100%', height: 2, background: COLORS.muted}} />
-					<Row icon="💶" label="Financement possible aujourd'hui" value={215000} color={COLORS.red} delay={44} />
+					<RangeRow icon="💶" label="Financement possible aujourd'hui" low={210000} high={220000} color={COLORS.red} delay={115} />
 				</div>
 			</Card>
 			<div style={{height: 42}} />
